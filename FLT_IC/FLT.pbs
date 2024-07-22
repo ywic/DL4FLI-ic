@@ -1,0 +1,13 @@
+#!/bin/bash
+#PBS -lselect=1:ncpus=8:mem=256gb:ngpus=1:gpu_type=RTX6000
+#PBS -lwalltime=30:00:00
+ 
+cd $PBS_O_WORKDIR
+module purge
+
+#module load tools/gpu-headnode
+module add tools/prod
+module add TensorFlow/2.7.1-foss-2021b-CUDA-11.4.1
+#module add scikit-learn/1.1.2-foss-2022a
+
+python  FLT_noise_a100.py
